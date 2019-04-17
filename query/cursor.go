@@ -182,6 +182,9 @@ func (cur *scannerCursorBase) Scan(row *Row) bool {
 		cur.series.Name = name
 		cur.series.Tags = tags
 		cur.series.id++
+		for k := range cur.m {
+			delete(cur.m, k)
+		}
 	}
 	row.Series = cur.series
 

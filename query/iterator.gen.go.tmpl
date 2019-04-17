@@ -450,7 +450,7 @@ func (h *{{$k.name}}SortedMergeHeap) Less(i, j int) bool {
 	} else if xTags, yTags := x.Tags.Subset(h.opt.Dimensions), y.Tags.Subset(h.opt.Dimensions); !xTags.Equals(&yTags) {
 		return xTags.ID() > yTags.ID()
 	}
-
+	
 	if x.Time != y.Time{
 		return x.Time > y.Time
 	}
@@ -779,7 +779,6 @@ func (itr *{{$k.name}}FillIterator) Next() (*{{$k.Name}}Point, error) {
 
 	// Check if the next point is outside of our window or is nil.
 	if p == nil || p.Name != itr.window.name || p.Tags.ID() != itr.window.tags.ID() {
-		itr.prev = {{$k.Name}}Point{Nil: true}
 		// If we are inside of an interval, unread the point and continue below to
 		// constructing a new point.
 		if itr.opt.Ascending && itr.window.time <= itr.endTime {
@@ -807,6 +806,7 @@ func (itr *{{$k.name}}FillIterator) Next() (*{{$k.Name}}Point, error) {
 		if itr.opt.Location != nil {
 			_, itr.window.offset = itr.opt.Zone(itr.window.time)
 		}
+		itr.prev = {{$k.Name}}Point{Nil: true}
 	}
 
 	// Check if the point is our next expected point.

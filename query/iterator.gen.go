@@ -780,7 +780,6 @@ func (itr *floatFillIterator) Next() (*FloatPoint, error) {
 
 	// Check if the next point is outside of our window or is nil.
 	if p == nil || p.Name != itr.window.name || p.Tags.ID() != itr.window.tags.ID() {
-		itr.prev = FloatPoint{Nil: true}
 		// If we are inside of an interval, unread the point and continue below to
 		// constructing a new point.
 		if itr.opt.Ascending && itr.window.time <= itr.endTime {
@@ -808,6 +807,7 @@ func (itr *floatFillIterator) Next() (*FloatPoint, error) {
 		if itr.opt.Location != nil {
 			_, itr.window.offset = itr.opt.Zone(itr.window.time)
 		}
+		itr.prev = FloatPoint{Nil: true}
 	}
 
 	// Check if the point is our next expected point.
@@ -3404,7 +3404,6 @@ func (itr *integerFillIterator) Next() (*IntegerPoint, error) {
 
 	// Check if the next point is outside of our window or is nil.
 	if p == nil || p.Name != itr.window.name || p.Tags.ID() != itr.window.tags.ID() {
-		itr.prev = IntegerPoint{Nil: true}
 		// If we are inside of an interval, unread the point and continue below to
 		// constructing a new point.
 		if itr.opt.Ascending && itr.window.time <= itr.endTime {
@@ -3432,6 +3431,7 @@ func (itr *integerFillIterator) Next() (*IntegerPoint, error) {
 		if itr.opt.Location != nil {
 			_, itr.window.offset = itr.opt.Zone(itr.window.time)
 		}
+		itr.prev = IntegerPoint{Nil: true}
 	}
 
 	// Check if the point is our next expected point.
@@ -6028,7 +6028,6 @@ func (itr *unsignedFillIterator) Next() (*UnsignedPoint, error) {
 
 	// Check if the next point is outside of our window or is nil.
 	if p == nil || p.Name != itr.window.name || p.Tags.ID() != itr.window.tags.ID() {
-		itr.prev = UnsignedPoint{Nil: true}
 		// If we are inside of an interval, unread the point and continue below to
 		// constructing a new point.
 		if itr.opt.Ascending && itr.window.time <= itr.endTime {
@@ -6056,6 +6055,7 @@ func (itr *unsignedFillIterator) Next() (*UnsignedPoint, error) {
 		if itr.opt.Location != nil {
 			_, itr.window.offset = itr.opt.Zone(itr.window.time)
 		}
+		itr.prev = UnsignedPoint{Nil: true}
 	}
 
 	// Check if the point is our next expected point.
@@ -8652,7 +8652,6 @@ func (itr *stringFillIterator) Next() (*StringPoint, error) {
 
 	// Check if the next point is outside of our window or is nil.
 	if p == nil || p.Name != itr.window.name || p.Tags.ID() != itr.window.tags.ID() {
-		itr.prev = StringPoint{Nil: true}
 		// If we are inside of an interval, unread the point and continue below to
 		// constructing a new point.
 		if itr.opt.Ascending && itr.window.time <= itr.endTime {
@@ -8680,6 +8679,7 @@ func (itr *stringFillIterator) Next() (*StringPoint, error) {
 		if itr.opt.Location != nil {
 			_, itr.window.offset = itr.opt.Zone(itr.window.time)
 		}
+		itr.prev = StringPoint{Nil: true}
 	}
 
 	// Check if the point is our next expected point.
@@ -11262,7 +11262,6 @@ func (itr *booleanFillIterator) Next() (*BooleanPoint, error) {
 
 	// Check if the next point is outside of our window or is nil.
 	if p == nil || p.Name != itr.window.name || p.Tags.ID() != itr.window.tags.ID() {
-		itr.prev = BooleanPoint{Nil: true}
 		// If we are inside of an interval, unread the point and continue below to
 		// constructing a new point.
 		if itr.opt.Ascending && itr.window.time <= itr.endTime {
@@ -11290,6 +11289,7 @@ func (itr *booleanFillIterator) Next() (*BooleanPoint, error) {
 		if itr.opt.Location != nil {
 			_, itr.window.offset = itr.opt.Zone(itr.window.time)
 		}
+		itr.prev = BooleanPoint{Nil: true}
 	}
 
 	// Check if the point is our next expected point.
